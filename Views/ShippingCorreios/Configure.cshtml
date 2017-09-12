@@ -2,7 +2,7 @@
     Layout = "";
 }
 @model NopBrasil.Plugin.Shipping.Correios.Models.CorreiosShippingModel
-@using Nop.Web.Framework;
+@using Grand.Web.Framework;
 
 <div style="color:Red;">
     @Html.ValidationSummary(false)
@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.Url)
+                        @Html.GrandLabelFor(model => model.Url)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.Url)
@@ -38,7 +38,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.CompanyCode)
+                        @Html.GrandLabelFor(model => model.CompanyCode)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.CompanyCode)
@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.Password)
+                        @Html.GrandLabelFor(model => model.Password)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.Password)
@@ -58,7 +58,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.PostalCodeFrom)
+                        @Html.GrandLabelFor(model => model.PostalCodeFrom)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.PostalCodeFrom)
@@ -68,7 +68,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.AddDaysForDelivery)
+                        @Html.GrandLabelFor(model => model.AddDaysForDelivery)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.AddDaysForDelivery)
@@ -78,7 +78,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.AvailableCarrierServices)
+                        @Html.GrandLabelFor(model => model.AvailableCarrierServices)
                     </div>
                     <div class="col-md-9">
                         <div style="height: 250px; width: 300px; overflow: auto; border: solid 1px #bbb;">
@@ -95,7 +95,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.ServiceNameDefault)
+                        @Html.GrandLabelFor(model => model.ServiceNameDefault)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.ServiceNameDefault)
@@ -105,7 +105,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.ShippingRateDefault)
+                        @Html.GrandLabelFor(model => model.ShippingRateDefault)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.ShippingRateDefault)
@@ -115,7 +115,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.QtdDaysForDeliveryDefault)
+                        @Html.GrandLabelFor(model => model.QtdDaysForDeliveryDefault)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.QtdDaysForDeliveryDefault)
@@ -125,7 +125,7 @@
 
                 <div class="form-group">
                     <div class="col-md-3">
-                        @Html.NopLabelFor(model => model.PercentageShippingFee)
+                        @Html.GrandLabelFor(model => model.PercentageShippingFee)
                     </div>
                     <div class="col-md-9">
                         @Html.EditorFor(model => model.PercentageShippingFee)
