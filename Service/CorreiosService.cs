@@ -8,6 +8,7 @@ using System.Linq;
 using System.ServiceModel.Channels;
 using System.ServiceModel;
 using NopBrasil.Plugin.Shipping.Correios.Utils;
+using Grand.Services.Catalog;
 
 namespace NopBrasil.Plugin.Shipping.Correios.Service
 {
@@ -24,15 +25,17 @@ namespace NopBrasil.Plugin.Shipping.Correios.Service
         private readonly CorreiosSettings _correiosSettings;
         private readonly ICurrencyService _currencyService;
         private readonly CurrencySettings _currencySettings;
+        private readonly IProductService _productService;
 
         public CorreiosService(IMeasureService measureService, IShippingService shippingService, CorreiosSettings correiosSettings,
-            ICurrencyService currencyService, CurrencySettings currencySettings)
+            ICurrencyService currencyService, CurrencySettings currencySettings, IProductService productService)
         {
             this._measureService = measureService;
             this._shippingService = shippingService;
             this._correiosSettings = correiosSettings;
             this._currencyService = currencyService;
             this._currencySettings = currencySettings;
+            this._productService = productService;
         }
 
         public WSCorreiosCalcPrecoPrazo.cResultado RequestCorreios(GetShippingOptionRequest getShippingOptionRequest)
@@ -55,7 +58,7 @@ namespace NopBrasil.Plugin.Shipping.Correios.Service
 
         private decimal GetDeclaredValue(GetShippingOptionRequest shippingOptionRequest)
         {
-            decimal declaredValue = GetConvertedRateFromPrimaryCurrency(shippingOptionRequest.Items.Sum(item => item.ShoppingCartItem.Product.Price));
+            decimal declaredValue = GetConvertedRateFromPrimaryCurrency(shippingOptionRequest.Items.Sum(item => _productService.GetProductById(item.ShoppingCartItem.ProductId).Price));
             return declaredValue < 18.0M ? 18.0M : declaredValue;
         }
 

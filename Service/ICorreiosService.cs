@@ -1,6 +1,4 @@
-﻿using Grand.Core.Domain.Directory;
-using Grand.Services.Directory;
-using Grand.Services.Shipping;
+﻿using Grand.Services.Shipping;
 
 namespace NopBrasil.Plugin.Shipping.Correios.Service
 {

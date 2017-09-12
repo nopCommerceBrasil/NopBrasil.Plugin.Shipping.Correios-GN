@@ -11,6 +11,8 @@ using Grand.Services.Shipping;
 using Grand.Services.Shipping.Tracking;
 using NopBrasil.Plugin.Shipping.Correios.Domain;
 using NopBrasil.Plugin.Shipping.Correios.Service;
+using Grand.Core.Domain.Orders;
+using System.Collections.Generic;
 
 namespace NopBrasil.Plugin.Shipping.Correios
 {
@@ -45,12 +47,12 @@ namespace NopBrasil.Plugin.Shipping.Correios
                 response.AddError(_localizationService.GetResource("Plugins.Shipping.Correios.Message.AddressNotSet"));
                 return false;
             }
-            if (getShippingOptionRequest.ShippingAddress.Country == null)
+            if (string.IsNullOrEmpty(getShippingOptionRequest.ShippingAddress.CountryId))
             {
                 response.AddError(_localizationService.GetResource("Plugins.Shipping.Correios.Message.CountryNotSet"));
                 return false;
             }
-            if (getShippingOptionRequest.ShippingAddress.StateProvince == null)
+            if (string.IsNullOrEmpty(getShippingOptionRequest.ShippingAddress.StateProvinceId))
             {
                 response.AddError(_localizationService.GetResource("Plugins.Shipping.Correios.Message.StateNotSet"));
                 return false;
@@ -213,6 +215,10 @@ namespace NopBrasil.Plugin.Shipping.Correios
 
             base.Uninstall();
         }
+
+        public bool HideShipmentMethods(IList<ShoppingCartItem> cart) => false;
+
+        public Type GetControllerType() => typeof(Controllers.ShippingCorreiosController);
 
         public ShippingRateComputationMethodType ShippingRateComputationMethodType => ShippingRateComputationMethodType.Realtime;
 
